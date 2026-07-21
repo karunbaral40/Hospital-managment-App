@@ -1,16 +1,33 @@
 package com.hospital.Hospital.Management.System.dto;
 
 import java.time.LocalDate;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Response payload containing patient information with assigned doctor")
 public class PatientResponseDTO {
 
+    @Schema(description = "Unique patient identifier", example = "1")
     private Integer id;
+    
+    @Schema(description = "Patient's full name", example = "John Doe")
     private String name;
+    
+    @Schema(description = "Patient's email address", example = "john@example.com")
     private String email;
+    
+    @Schema(description = "Patient's age in years", example = "35")
     private Integer age;
+    
+    @Schema(description = "Patient's primary disease or condition", example = "Diabetes")
     private String disease;
+    
+    @Schema(description = "Date of admission", example = "2024-07-21", format = "date")
     private LocalDate admitDate;
+    
+    @Schema(description = "Whether the patient's condition is serious", example = "false")
     private Boolean serious;
+    
+    @Schema(description = "Name of the assigned doctor", example = "Dr. Smith")
     private String doctorName;
 
     public PatientResponseDTO() {}

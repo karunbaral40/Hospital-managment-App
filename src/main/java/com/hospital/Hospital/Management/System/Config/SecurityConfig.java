@@ -81,6 +81,15 @@ public class SecurityConfig {
                         .requestMatchers("/actuator/info").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
+                                // ADD THESE 3 LINES — Swagger public access
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/swagger-ui.html").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
+
+                                // your existing rules below unchanged
+                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/actuator/health").permitAll()
+
                         // ADMIN only actuator
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
 

@@ -2,27 +2,35 @@ package com.hospital.Hospital.Management.System.dto;
 
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Request payload for admitting a new patient")
 public class PatientRequestDTO {
 
     @NotBlank(message = "Name must not be empty")
     @Size(min = 2, max = 100, message = "Name must be 2 to 100 characters")
+    @Schema(description = "Patient's full name", example = "John Doe", minLength = 2, maxLength = 100)
     private String name;
 
     @NotBlank(message = "Email must not be empty")
     @Email(message = "Email must be valid")
+    @Schema(description = "Patient's email address", example = "john@example.com")
     private String email;
 
     @Min(value = 1, message = "Age must be at least 1")
     @Max(value = 120, message = "Age cannot exceed 120")
+    @Schema(description = "Patient's age in years", example = "35", minimum = "1", maximum = "120")
     private Integer age;
 
     @NotBlank(message = "Disease cannot be empty")
+    @Schema(description = "Patient's primary disease or condition", example = "Diabetes")
     private String disease;
 
     @NotNull(message = "Admit date cannot be null")
+    @Schema(description = "Date of admission", example = "2024-07-21", format = "date")
     private LocalDate admitDate;
 
+    @Schema(description = "Whether the patient's condition is serious", example = "false")
     private Boolean serious = false;
 
     public PatientRequestDTO() {}

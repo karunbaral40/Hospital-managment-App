@@ -1,8 +1,17 @@
 package com.hospital.Hospital.Management.System.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Response payload containing JWT token after successful authentication")
 public class LoginResponse {
+    
+    @Schema(description = "JWT token for subsequent API requests", example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
     private String token;
+    
+    @Schema(description = "Token type", example = "Bearer")
     private String type = "Bearer";
+    
+    @Schema(description = "Username of authenticated user", example = "admin")
     private String username;
 
     public LoginResponse() {}
